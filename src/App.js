@@ -10,6 +10,7 @@ import {
 import Nav from './components/Nav';
 import Home from './components/Home';
 import MobileSidebar from './components/MobileSidebar';
+import Hero from './components/Hero';
 
 function App() {
   // toggle hamburger menu
@@ -22,7 +23,7 @@ function App() {
     <Router>
       <MobileSidebar isOpen={isOpen} toggle={toggle}/>
       <Nav  toggle={toggle}/>
-      <Home />
+      <Hero/>
     </Router>
   );
 }

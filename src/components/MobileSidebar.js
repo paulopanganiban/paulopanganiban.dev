@@ -22,7 +22,7 @@ const MobileSidebar = ({isOpen, toggle}) => {
             <SidebarWrapper>
                 <SidebarMenu>
                     {menuItems.map((item) => (
-                        <SidebarLink to={item}>
+                        <SidebarLink to={item} onClick={toggle}>
                             {item}
                         </SidebarLink>
                     ))}
