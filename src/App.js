@@ -1,10 +1,19 @@
 import React from 'react';
 import './App.css';
-import Hero from './components/Hero';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Nav from './components/Nav';
 
 function App() {
   return (
-    <Hero/>
+    <Router>
+      <Nav/>
+    </Router>
   );
 }
 
