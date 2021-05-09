@@ -8,11 +8,13 @@ import {
 } from "react-router-dom";
 
 import Nav from './components/Nav';
+import Home from './components/Home';
 
 function App() {
   return (
     <Router>
       <Nav/>
+      <Home/>
     </Router>
   );
 }
