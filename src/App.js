@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -9,12 +9,20 @@ import {
 
 import Nav from './components/Nav';
 import Home from './components/Home';
+import MobileSidebar from './components/MobileSidebar';
 
 function App() {
+  // toggle hamburger menu
+  const [isOpen, setIsOpen] = useState(false)
+  const toggle = () => {
+    console.log(isOpen)
+    setIsOpen(!isOpen)
+  }
   return (
     <Router>
-      <Nav/>
-      <Home/>
+      <MobileSidebar isOpen={isOpen} toggle={toggle}/>
+      <Nav  toggle={toggle}/>
+      <Home />
     </Router>
   );
 }

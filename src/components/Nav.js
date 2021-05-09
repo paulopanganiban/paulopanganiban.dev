@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import MyPic from '../images/washout.jpg'
-const Nav = () => {
+import { Link as LinkRouter } from 'react-router-dom'
+import { Link as LinkScroll } from 'react-scroll'
+import MobileNav from './MobileNav'
+const Nav = ({toggle}) => {
     const name = 'John Paulo Panganiban'
     const menuItems = [
         'Home',
@@ -13,44 +16,51 @@ const Nav = () => {
         'Contact'
     ]
     return (
-        <NavContainer>
-            <Sidebar>
-                <SidebarContainer>
-                    <SidebarHeader>
-                        <SidebarTop>
-                            <Avatar src={MyPic} alt="zz" />
+        <>
+            <MobileNav menuItems={menuItems} toggle={toggle} />
+            <NavContainer>
+                <Sidebar>
+                    <SidebarContainer>
+                        <SidebarHeader>
+                            <SidebarTop>
+                                <Avatar src={MyPic} alt="zz" />
 
-                            <h3>{name}</h3>
-                            <p>Available for work</p>
-                        </SidebarTop>
-                        <SidebarBottom>
-                            {menuItems.map((item) => (
-                                <NavLink>
-                                    {item}
-                                </NavLink>
-                            ))}
-                        </SidebarBottom>
-                    </SidebarHeader>
-                </SidebarContainer>
-            </Sidebar>
-        </NavContainer>
+                                <h3>{name}</h3>
+                                <p>Available for work</p>
+                            </SidebarTop>
+                            <SidebarBottom>
+                                {menuItems.map((item) => (
+                                    <NavLink>
+                                        {item}
+                                    </NavLink>
+                                ))}
+                            </SidebarBottom>
+                        </SidebarHeader>
+                    </SidebarContainer>
+                </Sidebar>
+            </NavContainer>
+        </>
     )
 }
 
 export default Nav
-const NavLink = styled.li`
-`
-const SidebarBottom = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
-> li {
+// styled(LinkScroll)
+const NavLink = styled(LinkScroll)`
 margin-top: 8px;
 margin-bottom: 8px;
 list-style-type: none;
 font-size: 22px;
 cursor: pointer;
+:hover {
+    color: #01bf71;
+    transition: 0.2s ease-in-out;
 }
+
+`
+const SidebarBottom = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;
 `
 const SidebarTop = styled.div`
 display: flex;
@@ -100,4 +110,8 @@ position: fixed;
 top: 0;
 width: 235px;
 z-index: 999;
+@media screen and (max-width: 767px) {
+    transition: 0.8s all ease;
+    display: none;
+}
 `
