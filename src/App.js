@@ -8,9 +8,10 @@ import {
 } from "react-router-dom";
 
 import Nav from './components/Nav';
-import Home from './components/Home';
 import MobileSidebar from './components/MobileSidebar';
 import Hero from './components/Hero';
+import About from './components/About';
+import { homeObjOne } from './data';
 
 function App() {
   // toggle hamburger menu
@@ -24,6 +25,7 @@ function App() {
       <MobileSidebar isOpen={isOpen} toggle={toggle}/>
       <Nav  toggle={toggle}/>
       <Hero/>
+      <About {...homeObjOne}/>
     </Router>
   );
 }
