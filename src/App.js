@@ -11,7 +11,7 @@ import Nav from './components/Nav';
 import MobileSidebar from './components/MobileSidebar';
 import Hero from './components/Hero';
 import About from './components/About';
-import { homeObjOne } from './data';
+import { heroObject, homeObjOne, menuItems } from './data';
 
 function App() {
   // toggle hamburger menu
@@ -23,9 +23,11 @@ function App() {
   return (
     <Router>
       <MobileSidebar isOpen={isOpen} toggle={toggle}/>
-      <Nav  toggle={toggle}/>
-      <Hero/>
-      <About {...homeObjOne}/>
+      <Nav toggle={toggle} {...heroObject} menuItems={menuItems} name={heroObject.name}/>
+      <Hero {...heroObject}/>
+      <About {...homeObjOne} />
+      <About {...homeObjOne} />
+      <About {...homeObjOne} />
     </Router>
   );
 }

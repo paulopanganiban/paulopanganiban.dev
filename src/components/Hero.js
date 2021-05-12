@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Bg from '../images/herobhg.jpg'
-const Hero = () => {
+const Hero = ({ name, heading, subtitle }) => {
 
 
     return (
@@ -11,9 +11,9 @@ const Hero = () => {
                 <HeroImg src={Bg} />
             </HeroBg>
             <HeroContent>
-                <h3>John Paulo Panganiban</h3>
-                <h1>Website and user interface designer</h1>
-                <p><strong>I just fucking love to code.</strong></p>
+                <h3>{name}</h3>
+                <h1>{heading}</h1>
+                <p><strong>{subtitle}</strong></p>
             </HeroContent>
         </HeroContainer>
     )
@@ -26,6 +26,19 @@ max-width: 1200px;
 position: absolute;
 > h1, h3, p {
     color: white;
+}
+> p {
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 767px) {
+    display: flex;
+    /* justify-content: start; */
+    /* align-items: center; */
+    flex-direction: column;
+     > h1 {
+        width: 250px;
+    }
 }
 `
 const HeroImg = styled.img`

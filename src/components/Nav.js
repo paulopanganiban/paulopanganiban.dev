@@ -1,36 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import MyPic from '../images/washout.jpg'
 import { Link as LinkRouter } from 'react-router-dom'
 import { Link as LinkScroll } from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
 import MobileNav from './MobileNav'
-const Nav = ({toggle}) => {
-    const name = 'John Paulo Panganiban'
-    const menuItems = [
-        'Home',
-        'About',
-        'Skills',
-        'Projects',
-        'Coding Challenges',
-        'Blog',
-        'Contact'
-    ]
+const Nav = ({ toggle, menuItems, name }) => {
+    const [scrollNav, setScrollNav] = useState(false);
+    const toggleHome = () => {
+        scroll.scrollToTop()
+    }
+    const changeNav = () => {
+        if (window.scrollY >= 80) {
+            setScrollNav(true)
+        } else {
+            setScrollNav(false)
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', changeNav)
+    }, [])
     return (
         <>
             <MobileNav menuItems={menuItems} toggle={toggle} />
-            <NavContainer>
+            <NavContainer scrollNav={scrollNav}>
                 <Sidebar>
                     <SidebarContainer>
                         <SidebarHeader>
                             <SidebarTop>
-                                <Avatar src={MyPic} alt="zz" />
-
+                                <Avatar src={MyPic} alt="zz" onClick={toggleHome}
+                                />
                                 <h3>{name}</h3>
-                                <p>Available for work</p>
+                                <p>Available for wait</p>
                             </SidebarTop>
                             <SidebarBottom>
                                 {menuItems.map((item) => (
-                                    <NavLink>
+                                    <NavLink to={item}
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    exact='true'
+                                    offset={-80}>
                                         {item}
                                     </NavLink>
                                 ))}

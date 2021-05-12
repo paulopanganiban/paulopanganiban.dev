@@ -1,7 +1,9 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
-const About = ({ lightBg, id, imgStart, topLine, lightText, darkText, description, headline, buttonLabel, img, alt }) => {
+const About = ({ lightBg, id, imgStart, 
+    topLine, lightText, darkText,
+    description, headline, buttonLabel, img, alt, primary, dark, dark2 }) => {
     return (
         <>
             <AboutContainer lightBg={lightBg} id={id}>
@@ -19,7 +21,16 @@ const About = ({ lightBg, id, imgStart, topLine, lightText, darkText, descriptio
                                     {description}
                                 </Subtitle>
                                 <BtnWrap>
-                                    <Button to="home">{buttonLabel}</Button>
+                                    <Button to="home"
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    exact="true"
+                                    offset={-80}
+                                    primary={primary ? 1 : 0}
+                                    dark={dark ? 1 : 0}
+                                    dark2={dark2 ? 1 : 0}
+                                    >{buttonLabel}</Button>
                                 </BtnWrap>
                             </TextWrapper>
                         </Column1>
@@ -37,12 +48,12 @@ const About = ({ lightBg, id, imgStart, topLine, lightText, darkText, descriptio
 
 export default About
 const Img = styled.img`
-width: 100%;
-margin: 0 0 10px 0;
-padding-right: 0;
+object-fit: contain;
+width: 50px;
+height: 100%;
 `
 const ImgWrap = styled.div`
-max-width: 555px;
+display: flex;
 height: 100%;
 `
 const BtnWrap = styled.div`
@@ -107,11 +118,14 @@ width: 100%;
 max-width: 1100px;
 margin-right: auto;
 margin-left: auto;
-padding: 0 24px;
+padding: 0;
 justify-content: center;
 `
 const AboutContainer = styled.div`
-margin-left: 235px;
 color: #fff;
 background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')};
+@media screen and (min-width: 768px) {
+    margin-left: 235px;
+}
+
 `
